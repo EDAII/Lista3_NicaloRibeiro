@@ -1,3 +1,8 @@
+//Lista 3 - ED2
+//Algoritmos de Ordenação n log n
+//Nícalo Ribeiro - 16/0016169
+
+
 #include<stdio.h>
 #include<stdlib.h>
 #include<time.h>
@@ -5,9 +10,6 @@
 
 #define linhasArquivo 5562
 
-//Quick Sort normal e com Bucket sort -- cod_ts, cod_ibge , populacao, região, estado
-//Heap sort normal e com bucket sort --  ||         ||       ||          ||     ||
-//Gerar grafico de tempos com gnu plot
 void quickSort(int inicio, int fim, int tipo);
 void heapSort(int tamanho, int tipo);
 void quickSortOptions();
@@ -101,7 +103,7 @@ void menu(){
             break;
 
             case 0:
-            return;
+            printf("Fim do programa.\n");
             break;
 
             default:
@@ -334,7 +336,7 @@ void gravaTempos(){
         fprintf ( arqT,"# x \t f(x) \n" );
 
         for(int i = 0; i < qtdQuickSort; i++){
-            fprintf(arqT, "%.7f \t %d \n",resultadoQuickSort[i],i);
+            fprintf(arqT, "%d \t %.7f \n",i,resultadoQuickSort[i]);
     
         }
         fclose(arqT);
@@ -345,14 +347,14 @@ void gravaTempos(){
         arqH = fopen("tempoHeap.txt", "w");
         fprintf ( arqH,"# x \t f(x) \n" );
         for(int i = 0; i < qtdHeapSort; i++){
-            fprintf(arqH, "%.7f \t %d \n",resultadoHeapSort[i],i);
+            fprintf(arqH, "%d \t %.7f\n",i,resultadoHeapSort[i]);
         }
         fclose(arqH);
     }
 }
 
 void gnuPlot(){
-
+    
     FILE *gp;
     gp = popen(GNUPLOT, "w");
     if (gp == NULL) {
